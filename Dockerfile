@@ -1,7 +1,8 @@
-FROM nginx:alpine
+FROM nginx
 
+ADD entrypoint.sh /
 ADD nginx.conf.template .
 
 ENV COOKIE_NAME _forward_auth
 
-CMD /bin/sh -c "envsubst < ./nginx.conf.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
+ENTRYPOINT [ "/entrypoint.sh" ]
