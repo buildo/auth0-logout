@@ -18,6 +18,6 @@ urlencode() {
 
 RETURN_TO=$(urlencode $RETURN_TO)
 
-envsubst < ./nginx.conf.template > /etc/nginx/conf.d/default.conf
+envsubst '\$COOKIE_NAME \$AUTH0_TENANT \$AUTH0_CLIENT_ID' < ./nginx.conf.template > /etc/nginx/conf.d/default.conf
 
 exec nginx -g 'daemon off;'
