@@ -1,7 +1,7 @@
 server {
   listen 80;
 
-  location /logout {
+  location = /logout {
       add_header Set-Cookie "${COOKIE_NAME}=; Domain=.${COOKIE_DOMAIN}; Path=/; Expires=Thu, 01-Jan-1970 00:00:01 GMT;";
       rewrite ^ https://${AUTH0_TENANT}.auth0.com/v2/logout?client_id=${AUTH0_CLIENT_ID}&returnTo=${RETURN_TO} permanent;
     }
